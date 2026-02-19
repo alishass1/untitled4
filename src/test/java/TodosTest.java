@@ -49,8 +49,8 @@ public class TodosTest {
 
         Task[] result = todos.search("Приложение");
 
-        Assertions.assertEquals(1, result.length);
-        Assertions.assertEquals(meeting, result[0]);
+        Task[] expected = {meeting};
+        Assertions.assertArrayEquals(expected, result);
     }
 
     @Test
@@ -74,8 +74,8 @@ public class TodosTest {
 
         Task[] result = todos.search("Молоко");
 
-        Assertions.assertEquals(1, result.length);
-        Assertions.assertEquals(epic, result[0]);
+        Task[] expected = {epic};
+        Assertions.assertArrayEquals(expected, result);
     }
 
     @Test
@@ -99,7 +99,8 @@ public class TodosTest {
 
         Task[] result = todos.search("Молоко");
 
-        Assertions.assertEquals(3, result.length); // все три задачи содержат "Молоко"
+        Task[] expected = {simpleTask, epic, meeting};
+        Assertions.assertArrayEquals(expected, result);
     }
 
     @Test
@@ -123,7 +124,8 @@ public class TodosTest {
 
         Task[] result = todos.search("Несуществующий запрос");
 
-        Assertions.assertEquals(0, result.length);
+        Task[] expected = {};
+        Assertions.assertArrayEquals(expected, result);
     }
 
     @Test
@@ -132,7 +134,8 @@ public class TodosTest {
 
         Task[] result = todos.search("что-то");
 
-        Assertions.assertEquals(0, result.length);
+        Task[] expected = {};
+        Assertions.assertArrayEquals(expected, result);
     }
 
     @Test
@@ -148,7 +151,7 @@ public class TodosTest {
 
         Task[] result = todos.search("");
 
-        // Пустая строка содержится в любой строке, поэтому все задачи подойдут
-        Assertions.assertEquals(2, result.length);
+        Task[] expected = {simpleTask, epic};
+        Assertions.assertArrayEquals(expected, result);
     }
 }

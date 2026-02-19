@@ -21,6 +21,7 @@ public class TaskTest {
         Assertions.assertFalse(result);
     }
 
+
     @Test
     public void testSimpleTaskMatchesWithPartialWord() {
         SimpleTask task = new SimpleTask(1, "Позвонить родителям");
